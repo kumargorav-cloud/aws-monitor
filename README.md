@@ -1,19 +1,21 @@
 # AWS Monitor Script
 
 A Python automation tool that automatically discovers all running 
-AWS EC2 instances and checks their disk usage via SSH.
+AWS EC2 instances and checks their disk usage via SSH and alerts on slack.
 
 ## What it does
 - Uses boto3 to query AWS and find all running EC2 instances
 - Automatically SSHes into each instance using paramiko
 - Parses disk usage output and flags partitions above threshold
 - Logs alerts with timestamps
+- send alert message to slack
 
 ## Tech Stack
 - Python 3
 - boto3 (AWS SDK)
 - paramiko (SSH automation)
 - AWS EC2
+- slack
 
 ## How to run
 1. Install dependencies:
@@ -32,3 +34,4 @@ AWS EC2 instances and checks their disk usage via SSH.
 - Python scripting
 - SSH automation
 - Real-time monitoring
+- slack 
