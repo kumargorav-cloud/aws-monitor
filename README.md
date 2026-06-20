@@ -1,37 +1,27 @@
-# AWS Monitor Script
+# AWS Monitor
 
-A Python automation tool that automatically discovers all running 
-AWS EC2 instances and checks their disk usage via SSH and alerts on slack.
+A collection of Python automation tools for AWS infrastructure monitoring and security auditing.
 
-## What it does
-- Uses boto3 to query AWS and find all running EC2 instances
-- Automatically SSHes into each instance using paramiko
-- Parses disk usage output and flags partitions above threshold
-- Logs alerts with timestamps
-- send alert message to slack
+## Tools
+
+### 1. Fleet Disk Monitor (aws-monitor-script.py)
+Automatically discovers running EC2 instances and checks disk usage via SSH, sending Slack alerts for high usage.
+
+### 2. Security Auditor (sg_boto3.py)
+Checks AWS account for security risks:
+- Security groups with sensitive ports open to the world (22, 3306, 5432)
+- S3 buckets without public access protection
+- Missing CloudTrail logging
+Sends Slack alerts for each finding.
 
 ## Tech Stack
-- Python 3
-- boto3 (AWS SDK)
-- paramiko (SSH automation)
-- AWS EC2
-- slack
+Python, boto3, paramiko, AWS (EC2, S3, CloudTrail), Slack Webhooks
 
-## How to run
-1. Install dependencies:
-   pip install boto3 paramiko
+## Setup
+1. pip install boto3 paramiko requests
+2. aws configure
+3. export SLACK_WEBHOOK_URL="your-webhook-url"
+4. Run: python3 aws-monitor-script.py OR python3 sg_boto3.py
 
-2. Configure AWS credentials:
-   aws configure
-
-3. Update key_path in aws-monitor-script.py with your .pem file path
-
-4. Run:
-   python aws-monitor-script.py
-
-## Skills demonstrated
-- AWS infrastructure automation
-- Python scripting
-- SSH automation
-- Real-time monitoring
-- slack 
+## Skills Demonstrated
+AWS automation, security auditing, SSH automation, Slack integration, secrets management
